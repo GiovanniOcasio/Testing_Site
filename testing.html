@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Auto Download</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+  <h1>Auto download demo</h1>
+  <p>If the browser allows it, a download will start automatically.</p>
+
+  <script>
+    // Replace this with the URL you want to download
+    const fileUrl = 'https://example.com/file.zip';
+    const filename = 'file.zip'; // suggested name (browser may ignore on cross-origin)
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Create a temporary invisible link
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.download = filename; // suggested filename
+      a.style.display = 'none';
+      document.body.appendChild(a);
+
+      // Programmatically click it
+      a.click();
+
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(a);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
